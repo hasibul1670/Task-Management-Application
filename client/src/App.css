@@ -1,0 +1,114 @@
+.carousel-image {
+  max-width: 750px; /* Adjust the width as desired */
+  height: auto;
+}
+
+.navbar {
+  border-bottom: 1px solid #bbbbbb;
+}
+
+.nav-link {
+  font-weight: bold;
+  font-size: 14px;
+  text-transform: uppercase;
+  text-decoration: none;
+  color: #fafafa;
+  padding: 2px 0px;
+  margin: 0px 2px;
+  display: inline-block;
+  position: relative;
+  opacity: 0.85;
+}
+
+.nav-link:hover {
+  opacity: 1;
+  color: white !important;
+  text-decoration: none !important;
+}
+
+.nav-link::before {
+  transition: 500ms;
+  height: 3px;
+  content: "";
+  position: absolute;
+  background-color: #009dff;
+}
+
+.nav-link-ltr::before {
+  width: 0%;
+  bottom: 10px;
+}
+
+.nav-link-ltr:hover::before {
+  width: 90%;
+}
+
+.nav-link-fade-up::before {
+  width: 100%;
+  bottom: 5px;
+  opacity: 0;
+}
+
+.nav-link-fade-up:hover::before {
+  bottom: 10px;
+  opacity: 1;
+}
+
+.nav-link-grow-up::before {
+  height: 0%;
+  width: 100%;
+  bottom: 0px;
+}
+
+.nav-link-grow-up:hover::before {
+  height: 5px;
+}
+
+
+
+/*  */
+
+.drawer-side {
+  background-attachment: fixed;
+}
+
+
+
+.cart-slider-list {
+  height: 100%;
+  overflow-y: scroll;
+}
+
+body.drawer-open {
+  overflow: hidden;
+}
+
+.card{
+  cursor: pointer;
+}
+
+
+
+
+/* Transition Styles */
+.modal-enter {
+  opacity: 0;
+  transform: scale(0.9);
+}
+
+.modal-enter-active {
+  opacity: 1;
+  transform: scale(1);
+  transition: opacity 300ms, transform 300ms;
+}
+
+.modal-exit {
+  opacity: 1;
+}
+
+.modal-exit-active {
+  opacity: 0;
+  transform: scale(0.9);
+  transition: opacity 300ms, transform 300ms;
+}
+
