@@ -1,6 +1,6 @@
 # Note Organizer Application
 
-A simple note organizer application to help you efficiently manage your important notes.
+A simple Task Management application to help you efficiently manage your important tasks.
 
 ## Table of Contents
 
@@ -13,10 +13,10 @@ A simple note organizer application to help you efficiently manage your importan
 
 ## Usage
 
-- Create, update, and delete notes.
+- Create, update, and delete tasks.
 - Display actual time and date for each note.
-- Categorize notes using tags.
-- Easily search for specific notes by title, category, or description.
+- Categorize tasks using tags.
+- Easily search for specific tasks by title, category, or description.
 
 ## Features
 
@@ -48,7 +48,7 @@ A simple note organizer application to help you efficiently manage your importan
 ## Backend Endpoints
 
 - Base URL: `https://noteapp-amber.vercel.app/api/v1`
-- `GET /note`: Get all notes.
+- `GET /note`: Get all tasks.
 - `GET /note/:noteId`: Get a specific note by ID.
 - `POST /note/create-note`: Create a new note.
 - `PATCH /note/:noteId`: Update a note by ID.
@@ -58,7 +58,7 @@ Please refer to the backend code for more detailed information about these endpo
 
 ## Live Demo
 
-- Visit the [Live Website](https://clientnotes.vercel.app/)
+- Visit the [Live Website](https://clienttasks.vercel.app/)
 - Demo User Email: demo@gmail.com
 - Demo User Password: 110220
 
