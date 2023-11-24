@@ -5,7 +5,6 @@ import Lottie from "lottie-react";
 import { useContext, useState } from "react";
 import { Helmet } from "react-helmet-async";
 import { useForm } from "react-hook-form";
-import "react-phone-number-input/style.css";
 import { Link, useNavigate } from "react-router-dom";
 import Swal from "sweetalert2";
 import { AuthContext } from "../../Providers/AuthProvider";
@@ -70,18 +69,18 @@ const SignUp = () => {
   };
 
   return (
-    <div className="main-container p-10 py-20 md:hero min-h-screen   justify-items-center">
+    <div className="main-container lg:p-10  p-4 py-20 md:hero min-h-screen justify-items-center">
       <Helmet>
         <title> Notes | SignUp❤️</title>
       </Helmet>
       <div className="hero min-h-screen bg-base-200 ">
         <div className="hero-content flex-col lg:flex-row-reverse  ">
           <div className="text-center ">
-            <h1 className="text-5xl font-bold">
+            <h1 className="text-2xl lg:text-5xl font-bold">
               SignUp <span className="text-blue-500">Now!</span>{" "}
             </h1>
 
-            <div className="w-1/8 mb-10 md:mb-0 mx-auto">
+            <div className="w-full mb-10 lg:md:mb-0 lg:mx-auto">
               <Lottie animationData={signup} loop={true} />
             </div>
           </div>

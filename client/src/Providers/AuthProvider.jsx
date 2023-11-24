@@ -1,13 +1,17 @@
 /* eslint-disable react-hooks/rules-of-hooks */
 /* eslint-disable no-unused-vars */
 /* eslint-disable react/prop-types */
+import { GoogleAuthProvider, getAuth, signInWithPopup } from "firebase/auth";
 import { createContext, useEffect, useState } from "react";
-
+import { app } from "../Components/firebase/firebase.config";
 export const AuthContext = createContext(null);
+
+const auth = getAuth(app);
 
 const AuthProvider = ({ children }) => {
   const [user, setUser] = useState(null);
   const [loading, setLoading] = useState(true);
+  const googleProvider = new GoogleAuthProvider();
 
   const loginUser = async (userData) => {
     setLoading(true);
@@ -30,6 +34,11 @@ const AuthProvider = ({ children }) => {
     }
 
     return response.json();
+  };
+
+  const googleSignIn = () => {
+    setLoading(true);
+    return signInWithPopup(auth, googleProvider);
   };
 
   const createUser = async (userData) => {
@@ -78,6 +87,7 @@ const AuthProvider = ({ children }) => {
     loading,
     loginUser,
     logOut,
+    googleSignIn,
   };
 
   return (

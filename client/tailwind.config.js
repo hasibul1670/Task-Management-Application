@@ -4,6 +4,9 @@ export default {
   content: ["./index.html", "./src/**/*.{js,ts,jsx,tsx}"],
   theme: {
     extend: {
+      fontFamily: {
+        sans: ["Roboto"],
+      },
       boxShadow: {
         "3xl": "0 35px 80px -15px rgba(0, 0, 0, 0.5)",
       },

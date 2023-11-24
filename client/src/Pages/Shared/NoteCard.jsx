@@ -104,11 +104,11 @@ const NoteCard = ({ course }) => {
           </div>
         </>
       )}
-
+    
       {!pinNote && (
         <div
           onClick={handleCardClick}
-          className="card w-64 border-solid border-1 border-sky-200 shadow-xl hover:shadow-3xl transform hover:-translate-y-1 transition-all duration-300 "
+          className="card w-64 border-solid border-1 border-sky-200 shadow-xl hover:shadow-3xl transform hover:-translate-y-1 transition-all duration-3000 "
           style={{
             backgroundColor: bgColor,
           }}
@@ -126,29 +126,14 @@ const NoteCard = ({ course }) => {
         </div>
       )}
 
-      {/* Popup Section */}
-
-      {/* <ReactModal
-        isOpen={isPopupVisible}
-        onRequestClose={handleCloseModal}
-        contentLabel="Popup Modal"
-        className="fixed top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2  p-5  rounded-lg max-w-2xl "
-        overlayClassName="fixed inset-0 bg-black bg-opacity-50 flex justify-center items-center"
-        style={{
-          content: {
-            boxShadow: "0 4px 8px rgba(0, 0, 0, 0.1)",
-            backgroundColor: bgColor,
-          },
-        }}
-      > */}
       {isPopupVisible && (
         <div
-          className="fixed inset-0 z-50 overflow-auto  bg-opacity-50 flex justify-center items-center overlay bg-black"
+          className="fixed inset-0 z-50 overflow-auto bg-opacity-50 flex justify-center items-center overlay bg-black"
           onClick={handleOverlayClick}
         >
           <div
             style={{ backgroundColor: bgColor }}
-            className="p-5 rounded-lg max-w-2xl "
+            className="p-5 rounded-lg w-72  lg:w-2/4 popup transform scale-100 transition-all duration-800"
           >
             <form onSubmit={() => handleSubmit(onSubmit)} className="max-w-2xl">
               <div className="mb-4 flex justify-between">
@@ -236,12 +221,10 @@ const NoteCard = ({ course }) => {
                   <button
                     key={color}
                     type="button"
-                    className="mr-3"
+                    className="mr-3  w-5 h-5 sm:w-8 sm:h-8 md:w-8 md:h-8 lg:w-8 lg:h-8 xl:w-8 xl:h-8"
                     style={{
                       backgroundColor: color,
-                      borderRadius: "9999px",
-                      width: "40px",
-                      height: "40px",
+                      borderRadius: "50%",
                     }}
                     onClick={() => handleColorSelection(color)}
                   ></button>

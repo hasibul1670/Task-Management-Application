@@ -12,7 +12,7 @@ const TakeNote = () => {
   const [isPopupVisible, setPopupVisible] = useState(false);
 
   const handleCardClick = () => {
-    window.my_modal_2.showModal();
+     window.my_modal_2.showModal();
     setPopupVisible(true);
   };
   const handleCloseModal = () => {
@@ -82,7 +82,7 @@ const TakeNote = () => {
         className="btn capitalize  btn-primary "
         onClick={handleCardClick}
       >
-        Add a Note{" "}
+        Add Note{" "}
         <span className="text-xl">
           {" "}
           <BiNotepad />

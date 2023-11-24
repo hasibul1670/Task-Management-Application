@@ -10,6 +10,7 @@ import { AuthContext } from "../../Providers/AuthProvider";
 
 import Lottie from "lottie-react";
 import login from "../../assets/animation/38435-register.json";
+import GoogleLogin from "./GoogleLogin";
 
 const Login = () => {
   const navigate = useNavigate();
@@ -150,14 +151,14 @@ const Login = () => {
                   ) : (
                     <button className="btn btn-primary">Login</button>
                   )}
-
-                  <p className="text-sm font-bold mt-4">
-                    Don't you have any Account ?{" "}
-                    <Link to="/signup" className="text-blue-500 ">
-                      Register
-                    </Link>{" "}
-                  </p>
                 </div>
+                <GoogleLogin />
+                <p className="text-sm font-bold mt-4 ml-5">
+                  Don't you have any Account ?{" "}
+                  <Link to="/signup" className="text-blue-500 ">
+                    Register
+                  </Link>{" "}
+                </p>
               </div>
             </div>
           </form>
