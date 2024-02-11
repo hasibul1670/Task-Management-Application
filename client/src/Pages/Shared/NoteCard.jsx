@@ -3,6 +3,7 @@
 /* eslint-disable react/prop-types */
 
 import { useEffect, useState } from "react";
+import Draggable from "react-draggable";
 import { Controller, useForm } from "react-hook-form";
 import { AiOutlineDelete } from "react-icons/ai";
 import { BsFillPinFill } from "react-icons/bs";
@@ -81,30 +82,32 @@ const NoteCard = ({ course }) => {
 
   return (
     <>
-      {pinNote && (
-        <>
-          <div
-            onClick={handleCardClick}
-            className="card w-64 border-solid border-1 border-sky-200 shadow-xl hover:shadow-3xl transform hover:-translate-y-1 transition-all duration-5000 "
-            style={{
-              backgroundColor: bgColor,
-            }}
-          >
-            <div className="card-body items-center text-center py-3">
-              <h6 className="font-bold text-amber-800">{initialTitle}</h6>
-              <p className="font-semibold text-sm text-cyan-950 clamp-4">
-                {initialNoteDescription}
-              </p>
-              <p className="text-teal-700 font-bold text-xs">
-                Category : {category}
-              </p>
-              <p className="text-pink-700 font-bold text-xs">{date}</p>
-              <LuPinOff />
+      <Draggable>
+        {pinNote && (
+          <>
+            <div
+              onClick={handleCardClick}
+              className="card w-64 border-solid border-1 border-sky-200 shadow-xl hover:shadow-3xl transform hover:-translate-y-1 transition-all duration-5000 "
+              style={{
+                backgroundColor: bgColor,
+              }}
+            >
+              <div className="card-body items-center text-center py-3">
+                <h6 className="font-bold text-amber-800">{initialTitle}</h6>
+                <p className="font-semibold text-sm text-cyan-950 clamp-4">
+                  {initialNoteDescription}
+                </p>
+                <p className="text-teal-700 font-bold text-xs">
+                  Category : {category}
+                </p>
+                <p className="text-pink-700 font-bold text-xs">{date}</p>
+                <LuPinOff />
+              </div>
             </div>
-          </div>
-        </>
-      )}
-    
+          </>
+        )}
+      </Draggable>
+
       {!pinNote && (
         <div
           onClick={handleCardClick}

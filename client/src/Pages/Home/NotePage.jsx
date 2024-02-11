@@ -6,6 +6,7 @@ import SectionTitle from "../../Components/SectionTitle/SectionTitle";
 import LoadingSpinner from "../Shared/LoadingSpinner";
 import NoteCard from "../Shared/NoteCard";
 
+
 const NotePage = ({ filteredNotes, isLoading }) => {
   const [greeting, setGreeting] = useState("");
 
@@ -41,13 +42,15 @@ const NotePage = ({ filteredNotes, isLoading }) => {
         data-aos="fade-right"
         heading={`${greeting}🙋‍♂️ ${name}, Your Notes`}
       ></SectionTitle>
+
+
       <div className="flex justify-center  container mx-auto mb-5    px-4">
         <div className="grid  mt-4 md:grid-cols-2 lg:grid-cols-3  gap-5">
           {pinnedNotes.map((course) => (
             <NoteCard key={course._id} course={course}></NoteCard>
           ))}
 
-          {/* Render unpinned notes */}
+        
           {unpinnedNotes.map((course) => (
             <NoteCard key={course._id} course={course}></NoteCard>
           ))}

@@ -97,7 +97,7 @@ const TakeNote = () => {
           <input
             type="text"
             placeholder="Title"
-            className="input font-bold input-ghost w-96   mb-2"
+            className="input font-bold input-ghost w-64 md:w-96   mb-2"
             {...register("title", { required: true })}
           />
           <div className="dropdown ml-5 dropdown-hover">
@@ -133,7 +133,7 @@ const TakeNote = () => {
 
           <textarea
             placeholder="Take a note..."
-            className= "font-bold textarea textarea-ghost w-96 h-32"
+            className="font-bold textarea textarea-ghost w-64 md:w-96 mt-5 mb-5   h-32"
             {...register("noteDescription", { required: true })}
           ></textarea>
         </form>
