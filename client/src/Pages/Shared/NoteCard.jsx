@@ -3,7 +3,6 @@
 /* eslint-disable react/prop-types */
 
 import { useEffect, useState } from "react";
-import Draggable from "react-draggable";
 import { Controller, useForm } from "react-hook-form";
 import { AiOutlineDelete } from "react-icons/ai";
 import { BsFillPinFill } from "react-icons/bs";
@@ -82,7 +81,7 @@ const NoteCard = ({ course }) => {
 
   return (
     <>
-      <Draggable>
+      <>
         {pinNote && (
           <>
             <div
@@ -106,7 +105,7 @@ const NoteCard = ({ course }) => {
             </div>
           </>
         )}
-      </Draggable>
+      </>
 
       {!pinNote && (
         <div
