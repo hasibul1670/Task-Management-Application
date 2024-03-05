@@ -28,8 +28,8 @@ const NavBar = ({ onSearchChange }) => {
         <div className="form-control">
           <input
             type="text"
-            className="input input-bordered  h-10 w-48 md:w-auto"
-            placeholder="Search bt title,category,description..."
+            className="input text-  rounded-lg input-bordered  h-10 w-full md:w-auto"
+            placeholder="Search by title,category,description..."
             value={searchInput}
             onChange={handleSearchInputChange}
           />
@@ -153,9 +153,9 @@ const NavBar = ({ onSearchChange }) => {
               <Link to="/login">
                 <button
                   onClick={handleLogOut}
-                  className="btn btn-sm btn-outline  hidden  lg:block"
+                  className="btn hover:bg-blue-900 border-none btn-sm bg-cyan-500  hidden  lg:block"
                 >
-                  <span className="text-white text-xs">logout</span>
+                  <span className="text-white text-xs capitalize">logout</span>
                 </button>
               </Link>
             </>

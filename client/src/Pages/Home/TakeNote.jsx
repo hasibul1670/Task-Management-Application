@@ -1,38 +1,16 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 /* eslint-disable no-unused-vars */
 
-import React, { useEffect, useRef, useState } from "react";
+import React, { useEffect, useState } from "react";
 import { useForm } from "react-hook-form";
 import { toast } from "react-hot-toast";
 import { AiFillCaretDown, AiFillCaretUp } from "react-icons/ai";
 import { BiNotepad } from "react-icons/bi";
 import { usePostNoteMutation } from "../../redux/features/note/noteApi";
-const DropdownOptions = [
-  "Personal Note",
-  "Work Note",
-  "Study Note",
-  "Shopping Note",
-];
 
 const TakeNote = () => {
-  const modalRef = useRef(null);
   const [isPopupVisible, setPopupVisible] = useState(false);
-  const [clickOutsidePopup, setClickOutsidePopup] = useState(false);
-
-  const handleOutsideClick = (event) => {
-    if (modalRef.current && !modalRef.current.contains(event.target)) {
-      setPopupVisible(false);
-      setClickOutsidePopup(true);
-    }
-  };
-
-  useEffect(() => {
-    document.addEventListener("click", handleOutsideClick);
-
-    return () => {
-      document.removeEventListener("click", handleOutsideClick);
-    };
-  }, []);
+  const [isSaveButtonClicked, setIsSaveButtonClicked] = useState(true);
 
   const handleCardClick = () => {
     window.my_modal_2.showModal();
@@ -40,10 +18,14 @@ const TakeNote = () => {
   };
   const handleCloseModal = () => {
     setPopupVisible(false);
-    setClickOutsidePopup(false);
   };
 
-
+  const DropdownOptions = [
+    "Personal Note",
+    "Work Note",
+    "Study Note",
+    "Shopping Note",
+  ];
 
   const [category, setCategory] = useState(DropdownOptions[0]);
   const [dropdownOpen, setDropdownOpen] = useState(false);
@@ -63,8 +45,8 @@ const TakeNote = () => {
   const userID = localStorage.getItem("userId");
 
   const onSubmit = async (data) => {
+    setIsSaveButtonClicked(false);
     setPopupVisible(false);
-    setClickOutsidePopup(false);
     const options = {
       data: {
         title: data.title,
@@ -91,9 +73,15 @@ const TakeNote = () => {
         toast.error("This Note Already Exists");
       }
     }
+    setIsSaveButtonClicked(true);
   };
 
-
+  console.log(isPopupVisible, !isPopupVisible, isSaveButtonClicked);
+  useEffect(() => {
+    if (!isPopupVisible && isSaveButtonClicked) {
+      handleSubmit(onSubmit)();
+    }
+  }, [isPopupVisible]);
 
   return (
     <div className="flex justify-center mb-5">
@@ -108,7 +96,7 @@ const TakeNote = () => {
         </span>
       </button>
 
-      <dialog id="my_modal_2" className="modal popup-overlay" ref={modalRef}>
+      <dialog id="my_modal_2" className=" modal ">
         <form
           // onSubmit={handleSubmit(onSubmit)}
           method="dialog"
@@ -150,7 +138,6 @@ const TakeNote = () => {
               <button
                 onClick={() => {
                   handleSubmit(onSubmit)();
-                  handleCloseModal();
                 }}
                 className="btn btn-sm capitalize rounded-lg btn-primary mr-2"
               >
