@@ -1,11 +1,10 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 /* eslint-disable no-unused-vars */
 /* eslint-disable react/prop-types */
-
+import { MdPushPin } from "react-icons/md";
 import { useEffect, useState } from "react";
 import { Controller, useForm } from "react-hook-form";
 import { AiOutlineDelete } from "react-icons/ai";
-import { BsFillPinFill } from "react-icons/bs";
 import { LuPinOff } from "react-icons/lu";
 import {
   useDeleteNoteMutation,
@@ -137,8 +136,11 @@ const NoteCard = ({ course }) => {
             style={{ backgroundColor: bgColor }}
             className="p-5 rounded-lg w-72  lg:w-2/4 popup transform scale-100 transition-all duration-800"
           >
-            <form onSubmit={() => handleSubmit(onSubmit)} className="max-w-2xl">
-              <div className="mb-4 flex justify-between">
+            <form
+              onSubmit={() => handleSubmit(onSubmit)}
+              className="max-w-2xl "
+            >
+              <div className="mb-4 flex justify-between ">
                 <Controller
                   name="title"
                   control={control}
@@ -148,12 +150,11 @@ const NoteCard = ({ course }) => {
                       {...field}
                       type="text"
                       id="title"
-                      className="font-bold  input input-bordered w-full"
+                      className="font-bold bg-base-200 rounded-lg input input-bordered w-full"
                       placeholder="Title"
                     />
                   )}
                 />
-
                 {pinStatus ? (
                   <button
                     className="tooltip tooltip-info ml-8 btn btn-sm btn-ghost capitalize"
@@ -164,14 +165,15 @@ const NoteCard = ({ course }) => {
                   </button>
                 ) : (
                   <button
-                    className="tooltip tooltip-info ml-8 btn btn-sm btn-ghost capitalize"
+                    className="tooltip text-2xl tooltip-info ml-8 btn btn-sm btn-ghost capitalize"
                     onClick={handleClickPin}
                     data-tip="Pin note"
                   >
-                    <BsFillPinFill />
+                    <MdPushPin />
                   </button>
                 )}
               </div>
+
               <div className="mb-4">
                 <Controller
                   name="noteDescription"
@@ -181,7 +183,7 @@ const NoteCard = ({ course }) => {
                     <textarea
                       {...field}
                       id="noteDescription"
-                      className="textarea  font-bold textarea-bordered h-48 w-full"
+                      className="textarea rounded-lg font-bold textarea-bordered h-64 w-full bg-base-200"
                       placeholder="Write note..."
                     />
                   )}
@@ -194,12 +196,13 @@ const NoteCard = ({ course }) => {
                 <button
                   onClick={handleCloseModal}
                   type="button"
-                  className={`btn btn-secondary  capitalize btn-sm mt-2`}
+                  className={`btn btn-secondary rounded-lg  capitalize btn-sm mt-2`}
                 >
                   Save
                 </button>
+
                 <button
-                  className="tooltip tooltip-warning text-red-700  text-2xl ml-5 btn btn-sm btn-ghost capitalize"
+                  className="tooltip tooltip-warning text-red-700  text-3xl ml-5 btn btn-sm btn-ghost rounded-sm capitalize"
                   onClick={handleDeleteNote}
                   data-tip="Delete note"
                 >

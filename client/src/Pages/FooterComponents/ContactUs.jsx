@@ -1,22 +1,21 @@
 /* eslint-disable no-unused-vars */
 /* eslint-disable react/no-unescaped-entities */
-import { useMutation } from "@tanstack/react-query";
-import Lottie from "lottie-react";
-import { useState } from "react";
+import { useContext } from "react";
 import { Helmet } from "react-helmet-async";
 import { useForm } from "react-hook-form";
 import { useLocation, useNavigate } from "react-router-dom";
 import Swal from "sweetalert2";
-import conactUs from "../../assets/animation/85620-contact.json";
+import { AuthContext } from "../../Providers/AuthProvider";
 
-const ContactMessageHandler = (ContactData) => {};
+import Lottie from "lottie-react";
+import login from "../../assets/animation/85620-contact.json";
 
 const ContactUs = () => {
   const navigate = useNavigate();
   const location = useLocation();
-  const [disabled, setDisabled] = useState(true);
-  const from = location.state?.from?.pathname || "/";
+  const from = location.state?.from?.path || "/";
 
+  const { loginUser, setUser, loading } = useContext(AuthContext);
   const {
     register,
     handleSubmit,
@@ -24,112 +23,87 @@ const ContactUs = () => {
     formState: { errors },
   } = useForm();
 
-  const mutation = useMutation((userData) => ContactMessageHandler(userData), {
-    onSuccess: (data) => {
-      reset();
+  const onSubmit = (data) => {
+    Swal.fire({
+      position: "top-center",
+      title: "Sending message...",
+      html: '<span class="loading loading-spinner text-primary loading-lg"></span>',
+      showConfirmButton: false,
+      onBeforeOpen: () => {
+        Swal.showLoading();
+      },
+    });
 
+    setTimeout(() => {
+      Swal.close();
       Swal.fire({
         position: "top-center",
         icon: "success",
-        title: "Your FeedBack Send successfully.",
+        title: "Your Message sent successfully.",
         showConfirmButton: false,
-        timer: 2500,
+        timer: 1500,
       });
-    },
-    onError: (error) => {
-      Swal.fire({
-        position: "top-center",
-        icon: "error",
-        title: error.message,
-        showConfirmButton: false,
-        timer: 2500,
-      });
-    },
-  });
-
-  const onSubmit = (data) => {
-    const email = data.email;
-    const message = data.message;
-    mutation.mutate({ email, message });
+    }, 2500);
+    reset();
   };
 
+  const email = localStorage.getItem("email");
+
   return (
-    <div className="main-container p-10 py-20 md:hero min-h-screen   justify-items-center">
+    <div className="main-container p-4 py-5 md:hero min-h-screen   justify-items-center">
       <Helmet>
-        <title> Notes | Contact Us</title>
+        <title> Notes | Contact 😍</title>
       </Helmet>
       <div className="hero min-h-screen bg-base-200">
         <div className="hero-content flex-col lg:flex-row-reverse">
-          <div className=" text-center ">
-            <h1 className="text-5xl font-bold">
-              Contact <span className="text-blue-500">Us !</span>{" "}
+          <div className=" text-center">
+            <h1 className="lg:text-5xl text-2xl  font-bold">
+              Contact With <span className="text-blue-500">Us !</span>{" "}
             </h1>
 
-            <div className="w-1/8 mb-10 md:mb-0 mx-auto">
-              <Lottie animationData={conactUs} loop={true} />
+            <div className="lg:w-1/8  w-full lg:mb-10 md:mb-0 mx-auto">
+              <Lottie animationData={login} loop={true} />
             </div>
-            
           </div>
 
           <form
             onSubmit={handleSubmit(onSubmit)}
-            className="md:hero font-bold  "
+            className="md:hero font-bold "
           >
             <div className="card flex-shrink-0 w-full max-w-screen-sm  shadow-2xl ">
               <div className="card-body">
-                {/* Email */}
-
-                
+                {/* email */}
                 <div className="form-control">
                   <label className="label">
                     <span className="label-text">Your Email:</span>
                   </label>
 
-                  <input
-                    {...register("email", {
-                      required: "Email is required",
-                      validate: {
-                        maxLength: (v) =>
-                          v.length <= 50 ||
-                          "The email should have at most 50 characters",
-                        matchPattern: (v) =>
-                          /^\w+([.-]?\w+)*@\w+([.-]?\w+)*(\.\w{2,3})+$/.test(
-                            v
-                          ) || "Email address must be a valid address",
-                      },
-                    })}
-                    name="email"
-                    placeholder="Email"
-                    className="input input-bordered"
-                  />
-
-                  {errors.email?.message && (
-                    <small className="text-red-600">
-                      {errors.email.message}
-                    </small>
-                  )}
+                  <p className=" h-12 px-4 bg-white text-justify	 border-2  border-blue-200	rounded-lg">
+                    {email}
+                  </p>
                 </div>
 
-                {/* message */}
+                {/* textarea */}
                 <div className="form-control">
                   <label className="label">
-                    <span className="label-text">Message : </span>
+                    <span className="label-text">Write Your Thought: </span>
                   </label>
                   <textarea
-                    {...register("message", { required: true })}
-                    name="message"
-                    type="text"
-                    placeholder="Type your message..."
-                    className="input input-bordered"
-                    style={{ height: "200px" }}
-                  ></textarea>
-                  {errors.message?.type === "required" && (
-                    <span className="text-red-600">Message is required!</span>
+                    {...register("textarea", { required: true })}
+                    name="textarea"
+                    type="textarea"
+                    placeholder="textarea"
+                    className="input rounded-lg  border-2 h-48  border-blue-200"
+                  />
+                  {errors.textarea?.type === "required" && (
+                    <span className="text-red-600">textarea is required!</span>
                   )}
                 </div>
 
                 <div className="form-control mt-6">
-                  <button className="btn btn-primary">Login</button>
+                  <button className="btn capitalize btn-primary rounded-lg">
+                    Send
+                  </button>
                 </div>
               </div>
             </div>

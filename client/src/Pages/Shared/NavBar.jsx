@@ -28,7 +28,7 @@ const NavBar = ({ onSearchChange }) => {
         <div className="form-control">
           <input
             type="text"
-            className="input text-  rounded-lg input-bordered  h-10 w-full md:w-auto"
+            className="input rounded-lg input-bordered  h-10 w-full md:w-auto"
             placeholder="Search by title,category,description..."
             value={searchInput}
             onChange={handleSearchInputChange}
@@ -42,13 +42,11 @@ const NavBar = ({ onSearchChange }) => {
     logOut();
   };
 
-  const email = localStorage.getItem("email");
-
   return (
     <div className="bg-gray-700 h-20">
       <div
         className="navbar  
- z-20   container mx-auto 	 "
+ z-20   container mx-auto "
       >
         <div className="navbar-start">
           <div className="dropdown ">
@@ -100,21 +98,27 @@ const NavBar = ({ onSearchChange }) => {
               <div>
                 <ul
                   tabIndex={0}
-                  className="menu menu-compact bg-black  dropdown-content mt-3 p-2 text-primary font-bold shadow  rounded-box w-52 z-50"
+                  className="menu menu-compact bg-black  dropdown-content mt-3 p-2 text-primary font-bold   rounded-lg  w-52 z-50"
                 >
                   <div className="navbar-end">
                     {user?.email ? (
                       <>
-                        <Link
-                          to="/"
-                          className="ml-3 font-bold text-sm text-white  mr-2 "
-                        ></Link>
+                        <button className="btn btn-sm btn-outline ">
+                          <Link
+                            to="/"
+                            className="capitalize font-bold text-sm text-white  mr-2 "
+                          >
+                            Home
+                          </Link>
+                        </button>
 
                         <button
                           onClick={handleLogOut}
                           className="btn btn-sm btn-outline "
                         >
-                          <span className="text-white text-xs">logout</span>
+                          <span className=" capitalize font-bold  text-white text-xs">
+                            logout
+                          </span>
                         </button>
                       </>
                     ) : (
@@ -133,11 +137,8 @@ const NavBar = ({ onSearchChange }) => {
             )}
           </div>
 
-          <Link
-            to="/"
-            className="btn btn-ghost normal-case  hidden sm:inline text-white text-xl"
-          >
-            Notes{" "}
+          <Link to="/" className="text-4xl lg:ml-5 text-white hidden sm:inline">
+            notes
           </Link>
         </div>
 
@@ -153,7 +154,7 @@ const NavBar = ({ onSearchChange }) => {
               <Link to="/login">
                 <button
                   onClick={handleLogOut}
-                  className="btn hover:bg-blue-900 border-none btn-sm bg-cyan-500  hidden  lg:block"
+                  className="btn hover:bg-blue-900 border-none btn-sm bg-cyan-700  rounded-lg hidden  lg:block"
                 >
                   <span className="text-white text-xs capitalize">logout</span>
                 </button>
@@ -163,7 +164,9 @@ const NavBar = ({ onSearchChange }) => {
             <>
               <Link to="/login">
                 {" "}
-                <button className="btn btn-sm btn-primary">Sign In</button>
+                <button className="btn btn-sm btn-primary capitalize rounded-lg ">
+                  Sign In
+                </button>
               </Link>
             </>
           )}

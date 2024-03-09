@@ -95,7 +95,7 @@ const AboutUs = () => {
 
             {/* Add more paragraphs here */}
           </div>
-          <Link to="/login">
+          <Link to="/">
             <button className="btn btn-primary justify-center mt-5">
               Get Started
             </button>

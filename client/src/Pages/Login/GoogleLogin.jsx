@@ -7,7 +7,10 @@ const GoogleLogin = () => {
   return (
     <div>
       <div className="form-control mt-2">
-        <button onClick={handleGoogleSignIn} className="btn btn-secondary">
+        <button
+          onClick={handleGoogleSignIn}
+          className="btn bg-cyan-950  text-white rounded-lg"
+        >
           Login With Google
         </button>
       </div>

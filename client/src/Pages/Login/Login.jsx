@@ -73,7 +73,7 @@ const Login = () => {
       <div className="hero min-h-screen bg-base-200">
         <div className="hero-content flex-col lg:flex-row-reverse">
           <div className=" text-center">
-            <h1 className="text-5xl font-bold">
+            <h1 className="lg:text-5xl text-2xl  font-bold">
               Login <span className="text-blue-500">Here !</span>{" "}
             </h1>
 
@@ -109,7 +109,7 @@ const Login = () => {
                     })}
                     name="email"
                     placeholder="Email"
-                    className="input input-bordered"
+                    className="input input-bordered rounded-lg"
                   />
 
                   {errors.email?.message && (
@@ -129,7 +129,7 @@ const Login = () => {
                     name="password"
                     type="password"
                     placeholder="Password"
-                    className="input input-bordered"
+                    className="input input-bordered rounded-lg"
                   />
                   {errors.password?.type === "required" && (
                     <span className="text-red-600">Password is required!</span>
@@ -149,7 +149,9 @@ const Login = () => {
                   {mutation.isLoading ? (
                     <span className="loading loading-spinner text-primary loading-lg"></span>
                   ) : (
-                    <button className="btn btn-primary">Login</button>
+                    <button className="btn btn-primary rounded-lg">
+                      Login
+                    </button>
                   )}
                 </div>
                 <GoogleLogin />
