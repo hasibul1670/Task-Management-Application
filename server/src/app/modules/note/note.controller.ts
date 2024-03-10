@@ -25,10 +25,14 @@ const createNote = catchAsync(async (req: Request, res: Response) => {
 
 const getAllNotes = catchAsync(async (req: Request, res: Response) => {
   const value = await client.get('notes');
-console.log(value)
+  console.log(value);
   if (value != null) {
     console.log('cached Hit');
-    sendFacultyResponse(res, 'Notes retrieved successfully!', value);
+    sendFacultyResponse(
+      res,
+      'Notes retrieved successfully!',
+      JSON.parse(value)
+    );
   } else {
     console.log('cached missed');
     const token = req.headers.authorization;
