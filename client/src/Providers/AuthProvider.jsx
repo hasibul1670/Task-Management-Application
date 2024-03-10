@@ -7,6 +7,8 @@ import { app } from "../Components/firebase/firebase.config";
 export const AuthContext = createContext(null);
 
 const auth = getAuth(app);
+export const baseUrl = "https://noteapp-phi-seven.vercel.app/api/v1";
+// export const baseUrl = "http://localhost:5000/api/v1";
 
 const AuthProvider = ({ children }) => {
   const [user, setUser] = useState(null);
@@ -15,16 +17,13 @@ const AuthProvider = ({ children }) => {
 
   const loginUser = async (userData) => {
     setLoading(true);
-    const response = await fetch(
-      "https://noteapp-amber.vercel.app/api/v1/auth/login",
-      {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify(userData),
-      }
-    );
+    const response = await fetch(`${baseUrl}/auth/login`, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(userData),
+    });
 
     if (response.status === 401) {
       throw new Error("Incorrect  Password !!!");
@@ -42,16 +41,13 @@ const AuthProvider = ({ children }) => {
   };
 
   const createUser = async (userData) => {
-    const response = await fetch(
-      "https://noteapp-amber.vercel.app/api/v1/user/create-user",
-      {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify(userData),
-      }
-    );
+    const response = await fetch(`${baseUrl}/user/create-user`, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(userData),
+    });
 
     if (response.status === 400) {
       throw new Error("Field is Empty!!!");

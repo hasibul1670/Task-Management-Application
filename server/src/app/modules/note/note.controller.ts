@@ -1,13 +1,11 @@
 /* eslint-disable no-console */
 import { Request, Response } from 'express';
 import { StatusCodes } from 'http-status-codes';
-import { client } from '../../../helpers/redisConnector';
 import catchAsync from '../../../shared/catchAsync';
 import sendReponse from '../../../shared/sendResponse';
 import { INote } from './note.interface';
 import { NoteService } from './note.services';
 
-const default_expiration = 3600;
 const sendFacultyResponse = (res: Response, message: string, data: any) => {
   sendReponse<INote>(res, {
     statusCode: StatusCodes.OK,
@@ -24,26 +22,11 @@ const createNote = catchAsync(async (req: Request, res: Response) => {
 });
 
 const getAllNotes = catchAsync(async (req: Request, res: Response) => {
-  const value = await client.get('notes');
-  console.log(value);
-  if (value != null) {
-    console.log('cached Hit');
-    sendFacultyResponse(
-      res,
-      'Notes retrieved successfully!',
-      JSON.parse(value)
-    );
-  } else {
-    console.log('cached missed');
-    const token = req.headers.authorization;
-    const result = await NoteService.getAllNotes(token as string);
-    await client.setEx(
-      'notes',
-      default_expiration as number,
-      JSON.stringify(result) as string
-    );
-    sendFacultyResponse(res, 'Notes retrieved successfully!', result);
-  }
+  const token = req.headers.authorization;
+  const result = await NoteService.getAllNotes(token as string);
+  console.log(result.length);
+
+  sendFacultyResponse(res, 'Notes retrieved successfully!', result);
 });
 
 const deleteNote = catchAsync(async (req: Request, res: Response) => {

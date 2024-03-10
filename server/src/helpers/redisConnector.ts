@@ -1,6 +1,6 @@
 /* eslint-disable no-unused-vars */
 import { createClient } from 'redis';
-
+export const default_expiration = 3600;
 export const client = createClient({
   url: 'redis://default:GFEIiWQa68I70dTXUoBKJbKKK8x0Ch0s@redis-15524.c251.east-us-mz.azure.cloud.redislabs.com:15524',
 });

@@ -2,6 +2,7 @@ import { Model, Types } from 'mongoose';
 import { IUser } from '../user/user.interface';
 
 export type INote = {
+  email: any;
   id: string;
   title: string;
   noteDescription: string;
