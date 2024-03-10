@@ -13,11 +13,18 @@ Welcome to the Summer Camp School project [SERVER]! This is an e-learning websit
 
 ## Technologies Used
 
-- Backend: Node.js, Express.js,Typescript
+- Backend: Node.js, Express.js,Typescript,Redis
 - Database: MongoDB
 - Deployment: Vercel
 - Authentication: JWT
 - Packages Used: bcrypt,http-errors,http-status-codes,zod
+
+## Technologies Used
+
+- Redis Command
+ - See All Keys ->keys *
+ - Remove All Keys ->flushall
+ - redis-cli
 
 
 If you have any questions, feel free to reach out to us:

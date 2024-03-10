@@ -15,7 +15,6 @@ const createNote = async (payload: INote): Promise<INote> => {
 };
 
 const getAllNotes = async (accessToken: string) => {
-  console.log('Hello',accessToken);
   const email = getEmailFromAccessToken(accessToken);
 
   const notes = (await Note.find({}).populate('userID')) as Array<{
