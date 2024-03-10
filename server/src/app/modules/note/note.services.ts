@@ -13,7 +13,6 @@ const createNote = async (payload: INote): Promise<INote> => {
   const NotePayload: INote = { ...payload, date: formattedDate, id: noteID };
   const result = await Note.create(NotePayload);
   await client.del(`notes:${payload.email}`);
-
   return result;
 };
 
@@ -43,8 +42,10 @@ const getSingleNote = async (id: string) => {
   return result;
 };
 
-const deleteNote = async (id: string) => {
+const deleteNote = async (id: string, accessToken: string) => {
+  const email = getEmailFromAccessToken(accessToken);
   const result = await Note.findByIdAndDelete({ _id: id });
+  await client.del(`notes:${email}`);
   return result;
 };
 

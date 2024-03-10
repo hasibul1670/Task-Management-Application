@@ -3,7 +3,7 @@ const noteApi = api.injectEndpoints({
   endpoints: (builder) => ({
     getAllNotes: builder.query({
       query: () => "/note",
-      providesTags: ["category", "bgColor", "data", "noteDescription", "title"],
+      providesTags: ["category", "bgColor", "data", "noteDescription", "title","email"],
     }),
 
     singlenote: builder.query({
@@ -22,6 +22,7 @@ const noteApi = api.injectEndpoints({
         "data",
         "noteDescription",
         "title",
+        "email"
       ],
     }),
 

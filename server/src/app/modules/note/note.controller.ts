@@ -31,7 +31,8 @@ const getAllNotes = catchAsync(async (req: Request, res: Response) => {
 
 const deleteNote = catchAsync(async (req: Request, res: Response) => {
   const id = req.params.id;
-  const result = await NoteService.deleteNote(id);
+  const token = req.headers.authorization;
+  const result = await NoteService.deleteNote(id, token as string);
   sendFacultyResponse(res, ' Note Deleted successfully !', result);
 });
 

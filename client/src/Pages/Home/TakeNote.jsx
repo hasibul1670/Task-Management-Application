@@ -43,6 +43,7 @@ const TakeNote = () => {
   };
 
   const userID = localStorage.getItem("userId");
+  const email = localStorage.getItem("email");
 
   const onSubmit = async (data) => {
     setIsSaveButtonClicked(false);
@@ -54,6 +55,7 @@ const TakeNote = () => {
         category: category,
         userID: userID,
         bgColor: "#ffec99",
+        email: email,
       },
     };
     try {
