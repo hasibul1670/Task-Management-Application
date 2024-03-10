@@ -1,8 +1,7 @@
 /* eslint-disable no-console */
 import { Request, Response } from 'express';
 import { StatusCodes } from 'http-status-codes';
-
-import { client } from '../../../server';
+import { client } from '../../../helpers/redisConnector';
 import catchAsync from '../../../shared/catchAsync';
 import sendReponse from '../../../shared/sendResponse';
 import { INote } from './note.interface';
@@ -26,7 +25,7 @@ const createNote = catchAsync(async (req: Request, res: Response) => {
 
 const getAllNotes = catchAsync(async (req: Request, res: Response) => {
   const value = await client.get('notes');
-
+console.log(value)
   if (value != null) {
     console.log('cached Hit');
     sendFacultyResponse(res, 'Notes retrieved successfully!', value);

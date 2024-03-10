@@ -1,19 +1,12 @@
 /* eslint-disable no-unused-vars */
 import { Server } from 'http';
 import mongoose from 'mongoose';
-import { createClient } from 'redis';
 import app from './app';
 import config from './config';
-export const client = createClient();
-client.on('error', err => console.log('Redis Connection Error'));
-client.on('connect', err => console.log('⚡⚡Redis is Connected'));
-const redisConnect = async () => {
-  await client.connect();
-};
+
 let serverStatus: Server;
 async function server() {
   try {
-    redisConnect();
     await mongoose.connect(config.database_url as string);
     console.log(`🛢 Database is connected successfully`);
     serverStatus = app.listen(config.port, () => {
