@@ -58,7 +58,7 @@ Please refer to the backend code for more detailed information about these endpo
 
 ## Live Demo
 
-- Visit the [Live Website](https://clientnotes.vercel.app/)
+- Visit the [Live Website](https://note007.vercel.app/)
 - Demo User Email: demo@gmail.com
 - Demo User Password: 110220
 
