@@ -7,15 +7,15 @@ import config from './config';
 let serverStatus: Server;
 async function server() {
   try {
-    await mongoose.connect(config.database_url as string);
-    console.log(`🛢 Database is connected successfully`);
+    await mongoose.connect(config.database_url as any);
+    console.log(`😍😍 Database is connected successfully`);
     serverStatus = app.listen(config.port, () => {
-      console.log(`listening on port ${config.port}`);
+      console.log(`😒😒 Listening on port ${config.port}`);
     });
   } catch (err) {
     console.error('Failed to connect database', err);
   }
-
+ 
   process.on('unhandledRejection', err => {
     console.error(err);
 

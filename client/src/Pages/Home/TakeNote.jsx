@@ -3,10 +3,10 @@
 
 import React, { useEffect, useState } from "react";
 import { useForm } from "react-hook-form";
-import { toast } from "react-hot-toast";
 import { AiFillCaretDown, AiFillCaretUp } from "react-icons/ai";
 import { BiNotepad } from "react-icons/bi";
 import { usePostNoteMutation } from "../../redux/features/note/noteApi";
+import { toast } from "sonner";
 
 const TakeNote = () => {
   const [isPopupVisible, setPopupVisible] = useState(false);
@@ -78,7 +78,6 @@ const TakeNote = () => {
     setIsSaveButtonClicked(true);
   };
 
-  console.log(isPopupVisible, !isPopupVisible, isSaveButtonClicked);
   useEffect(() => {
     if (!isPopupVisible && isSaveButtonClicked) {
       handleSubmit(onSubmit)();
